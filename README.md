@@ -10,15 +10,25 @@ wsl --install -d Debian
 
 ## Upgrade Debian from Buster to Bullseye
 
-- In the Debian terminal:
+- In the Debian shell:
 
 ```
 sudo apt update && sudo apt upgrade -y
 ```
 
+- Check the version of your distro:
+
+```
+cat /etc/debian_version
+```
+
+- Modify the sources:
+
 ```
 sudo nano /etc/apt/sources.list
 ```
+
+- Delete all the content of the file, and past this:
 
 ```
 deb http://deb.debian.org/debian bullseye main
@@ -26,22 +36,31 @@ deb http://deb.debian.org/debian bullseye-updates main
 deb http://security.debian.org/debian-security/ bullseye-security main
 ```
 
+> Press `CTRL` + `O` for overwriting, confirm by pressing `Enter`, and leave nano by pressing `CTRL` + `X`.
+
 ```
 sudo apt update && sudo apt upgrade -y
 ```
+
+- Upgrade the version:
 
 ```
 sudo apt full-upgrade -y
 ```
 
+> Select `yes` when needed.
+
 ```
 sudo apt autoremove -y
 ```
+
+- Check that the version is up to date:
 
 ```
 cat /etc/debian_version
 ```
 
+- Install additional packages:
 ```
 sudo apt install -y software-properties-common curl wget openssh-server
 ```
@@ -165,7 +184,7 @@ sudo chgrp $(id -u) -R /var/www && sudo chown www-data -R /var/www && sudo chmod
 
 ```curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash```
 
-- Close the Debian terminal and restart it.
+- Close the Debian shell and restart it.
 
 ```command -v nvm```
 
@@ -346,11 +365,20 @@ code /var/www
 maildev --ip 127.0.0.1
 ```
 
+
 ## Resources
 
 - [Official Microsoft Documentation](https://docs.microsoft.com/fr-fr/windows/wsl/install)
 - [WSL2 Guide for Debian](https://gist.github.com/xnebulr/c769f26bffd41db2667d1f9de9f8ce5a)
+
+## Tools
+- [Debian](https://www.debian.org/)
+- [MariaDB Foundation](https://mariadb.org/)
+- [The Apache Software Foundation](https://apache.org/)
+- [PHP](https://www.php.net/)
 - [The Postfix Home Page](http://www.postfix.org/)
 - [MailDev](https://maildev.github.io/maildev/)
 - [Adminer](https://www.adminer.org/)
 - [git](https://git-scm.com/)
+- [GitHub](https://github.com/)
+- [Visual Studio Code](https://code.visualstudio.com/)
