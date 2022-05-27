@@ -393,6 +393,7 @@ maildev --ip 127.0.0.1
 
 ## Tools
 - [Debian](https://www.debian.org/)
+- [The GNU Nano Text Editor Homepage](https://www.nano-editor.org/)
 - [MariaDB Foundation](https://mariadb.org/)
 - [The Apache Software Foundation](https://apache.org/)
 - [PHP](https://www.php.net/)
