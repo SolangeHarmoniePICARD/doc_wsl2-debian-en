@@ -283,3 +283,41 @@ sudo service apache2 restart
 ```
 localhost/adminer
 ```
+
+## Install GIT
+
+```
+sudo apt install git -y
+```
+
+- Change *your-username* and *your-mail@example.com*:
+
+```
+git config --global user.name your-username
+git config --global user.email your-mail@example.com
+```
+
+- You can change this information at any time:
+
+```
+sudo nano ~/.gitconfig
+```
+
+### Authenticate with SSH key on GitHub
+
+- Create GitHub account: [Join GitHub](https://github.com/join)
+
+- Generate your SSH Key: 
+
+```
+ssh-keygen -t rsa -b 2048
+```
+
+- Display your SSH Key and copy it:
+
+```
+cat ~/.ssh/id_rsa.pub
+```
+
+- Then paste it into GitHub.
+
