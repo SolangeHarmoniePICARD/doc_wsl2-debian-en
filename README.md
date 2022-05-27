@@ -52,7 +52,7 @@ sudo apt install -y software-properties-common curl wget openssh-server
 sudo nano /etc/sudoers
 ```
 
-- At the last line of the file:
+- At the last line of the file, paste:
 
 ```
 # NO PASSWORD
@@ -321,3 +321,36 @@ cat ~/.ssh/id_rsa.pub
 
 - Then paste it into GitHub.
 
+## Install VSCode 
+
+- Download and install [Visual Studio Code](https://code.visualstudio.com/Download)
+
+- Install [Remote - WSL](https://aka.ms/vscode-remote/download/wsl)
+
+## Init
+
+```
+sudo nano ~/.bashrc
+```
+
+- At the last line of the file, paste:
+
+```
+# Start apache2, mariadb & postfix
+sudo service apache2 start && sudo service mariadb start && sudo service postfix start
+
+# Start VSCode (Remote WSL)
+code /var/www
+
+# Start MailDev
+maildev --ip 127.0.0.1
+```
+
+## Resources
+
+- [Official Microsoft Documentation](https://docs.microsoft.com/fr-fr/windows/wsl/install)
+- [WSL2 Guide for Debian](https://gist.github.com/xnebulr/c769f26bffd41db2667d1f9de9f8ce5a)
+- [The Postfix Home Page](http://www.postfix.org/)
+- [MailDev](https://maildev.github.io/maildev/)
+- [Adminer](https://www.adminer.org/)
+- [git](https://git-scm.com/)
