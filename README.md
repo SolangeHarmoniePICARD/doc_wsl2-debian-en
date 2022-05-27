@@ -131,7 +131,7 @@ Thanks for using MariaDB!
 ```
 sudo mysql -u root -p
 ```
-- Change "username" and "password":
+- Change *username* and *password*:
 
 ```
 CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
@@ -170,6 +170,14 @@ sudo chgrp $(id -u) -R /var/www && sudo chown www-data -R /var/www && sudo chmod
 ```command -v nvm```
 
 - If returns `nvm`, it works !
+
+```
+nvm install --lts
+```
+
+```
+nvm install node
+```
 
 ## Install PHP
 
@@ -215,7 +223,7 @@ error_reporting = E_ALL
 display_errors = On
 ```
 
-- View error logs when you debug PHP::
+- View error logs when you debug your code in PHP::
 
 ```
 cat /var/log/apache2/error.log
@@ -235,7 +243,7 @@ sudo nano /etc/postfix/main.cf
 
 - Change value of `then keep the default values` to `127.0.0.1:1025`.
 
-## Install MailDev
+### Install MailDev
 
 ```
 npm install -g maildev
@@ -256,5 +264,22 @@ http://127.0.0.1:1080
 - Close MailDev by pressing `CTRL` + `C`.
 
 
+## Install Adminer
 
+```
+sudo apt install -y adminer
+```
 
+```
+sudo a2enconf adminer
+```
+
+```
+sudo service apache2 restart
+```
+
+- In the URL bar of your browser, type: 
+
+```
+localhost/adminer
+```
