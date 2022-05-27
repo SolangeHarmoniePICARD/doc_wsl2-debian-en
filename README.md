@@ -84,17 +84,29 @@ sudo nano /etc/sudoers
 sudo apt install -y mariadb-server
 ```
 
+- Checks the version to ensure that MariaDB is installed :
+
 ```
 mysql --version
 ```
+
+> If there is a version number displayed, it works.
+
+- Start the service: 
 
 ```
 sudo service mariadb start
 ```
 
+> Some other commands that may be useful to you: `sudo service mariadb status`, `sudo service mariadb stop`, `sudo service mariadb restart`.
+
+- Now, launch the shell script [mysql_secure_installation](https://mariadb.com/kb/en/mysql_secure_installation/) (wich enables you to improve the security of your MariaDB installation): 
+
 ```
 sudo mysql_secure_installation
 ```
+
+- Press `Enter` when the script asks to enter current password for root, then, answer systematically `Y` (yes) to all questions (and of course, set the new password for root) :
 
 ```
 NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
@@ -164,9 +176,13 @@ EXIT
 sudo apt install -y apache2
 ```
 
+- Start the service: 
+
 ```
 sudo service apache2 start
 ```
+
+> Like for MariaDB, there is ome other commands that may be useful: `sudo service apache2 status`, `sudo service apache2 stop`, `sudo service apache2 restart`.
 
 ```
 sudo nano /etc/apache2/sites-enabled/000-default.conf
