@@ -184,13 +184,15 @@ sudo service apache2 start
 
 > Like for MariaDB, there is ome other commands that may be useful: `sudo service apache2 status`, `sudo service apache2 stop`, `sudo service apache2 restart`.
 
+- To be able to work in the `www` directory and not in the `html` directory, we will modify the Apache configuration:
+
 ```
 sudo nano /etc/apache2/sites-enabled/000-default.conf
 ```
 
 - Change ```DocumentRoot /var/www/html``` to ```DocumentRoot /var/www```.
 
-- Change permissions:
+- Then, change permissions:
 
 ```
 sudo chgrp $(id -u) -R /var/www && sudo chown www-data -R /var/www && sudo chmod 775 -R /var/www
@@ -204,15 +206,20 @@ sudo chgrp $(id -u) -R /var/www && sudo chown www-data -R /var/www && sudo chmod
 
 ```command -v nvm```
 
-- If returns `nvm`, it works !
+> If returns `nvm`, it works !
+
+- Install the current stable LTS release of Node.js:
 
 ```
 nvm install --lts
 ```
 
+- Install the current release of Node.js: 
 ```
 nvm install node
 ```
+
+> List what versions of Node are installed: `nvm ls`.
 
 ## Install PHP
 
@@ -258,11 +265,8 @@ error_reporting = E_ALL
 display_errors = On
 ```
 
-- View error logs when you debug your code in PHP::
+> View error logs when you debug your code in PHP: `cat /var/log/apache2/error.log`
 
-```
-cat /var/log/apache2/error.log
-```
 
 ### Install Postfix
 
@@ -270,13 +274,13 @@ cat /var/log/apache2/error.log
 sudo apt install -y postfix
 ```
 
-- Choose `Internet Site` then keep the default values.
+> Choose `Internet Site`, then keep the default values.
 
 ```
 sudo nano /etc/postfix/main.cf
 ```
 
-- Change value of `then keep the default values` to `127.0.0.1:1025`.
+- Change value of `relayhost ` to `127.0.0.1:1025`.
 
 ### Install MailDev
 
@@ -296,7 +300,7 @@ maildev --ip 127.0.0.1
 http://127.0.0.1:1080
 ```
 
-- Close MailDev by pressing `CTRL` + `C`.
+> Close MailDev by pressing `CTRL` + `C`.
 
 
 ## Install Adminer
