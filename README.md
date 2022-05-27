@@ -139,3 +139,26 @@ GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost';
 EXIT
 ```
 
+## Install Apache
+
+```
+sudo apt install -y apache2
+```
+
+```
+sudo service apache2 start
+```
+
+```
+sudo nano /etc/apache2/sites-enabled/000-default.conf
+```
+
+- Change ```DocumentRoot /var/www/html``` to ```DocumentRoot /var/www```:
+
+- Change permissions:
+
+```
+sudo chgrp $(id -u) -R /var/www && sudo chown www-data -R /var/www && sudo chmod 775 -R /var/www
+```
+
+
