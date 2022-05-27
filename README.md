@@ -153,12 +153,108 @@ sudo service apache2 start
 sudo nano /etc/apache2/sites-enabled/000-default.conf
 ```
 
-- Change ```DocumentRoot /var/www/html``` to ```DocumentRoot /var/www```:
+- Change ```DocumentRoot /var/www/html``` to ```DocumentRoot /var/www```.
 
 - Change permissions:
 
 ```
 sudo chgrp $(id -u) -R /var/www && sudo chown www-data -R /var/www && sudo chmod 775 -R /var/www
 ```
+
+## Install Node.js
+
+```curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash```
+
+- Close the Debian terminal and restart it.
+
+```command -v nvm```
+
+- If returns `nvm`, it works !
+
+## Install PHP
+
+```
+sudo apt -y install lsb-release apt-transport-https ca-certificates 
+```
+
+```
+sudo curl -sSL -o /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+```
+
+```
+sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+```
+
+```
+sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove
+```
+
+```
+sudo apt -y install php8.0 libapache2-mod-php8.0 php8.0-{bcmath,bz2,intl,gd,mbstring,mysql,zip,curl,dom}
+```
+
+```
+sudo service apache2 restart
+```
+
+### PHP errors
+
+```
+sudo nano /etc/php/8.0/apache2/php.ini
+```
+
+- Change the default value of `error_reporting` from `E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED` to `E_ALL`:
+
+```
+error_reporting = E_ALL
+```
+
+- Change the default value of `display_errors` from `Off` to `On`:
+
+```
+display_errors = On
+```
+
+- View error logs when you debug PHP::
+
+```
+cat /var/log/apache2/error.log
+```
+
+### Install Postfix
+
+```
+sudo apt install -y postfix
+```
+
+- Choose `Internet Site` then keep the default values.
+
+```
+sudo nano /etc/postfix/main.cf
+```
+
+- Change value of `then keep the default values` to `127.0.0.1:1025`.
+
+## Install MailDev
+
+```
+npm install -g maildev
+```
+
+- Start MailDev: 
+
+```
+maildev --ip 127.0.0.1
+```
+
+- In the URL bar of your browser, type:
+
+```
+http://127.0.0.1:1080
+```
+
+- Close MailDev by pressing `CTRL` + `C`.
+
+
 
 
