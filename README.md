@@ -200,6 +200,8 @@ sudo chgrp $(id -u) -R /var/www && sudo chown www-data -R /var/www && sudo chmod
 
 ## Install Node.js
 
+> Why we need to install Node.js in our LAMP Stack ? Simply because we will install a mail catcher, MailDev, which works with Node.js. 
+
 ```curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash```
 
 - Close the Debian shell and restart it.
@@ -227,21 +229,33 @@ nvm install node
 sudo apt -y install lsb-release apt-transport-https ca-certificates 
 ```
 
+- Download GPG key:
+
 ```
 sudo curl -sSL -o /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 ```
+
+- Add PHP repository:
 
 ```
 sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 ```
 
+- Update the package lists:
+
 ```
 sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove
 ```
 
+- Next, install PHP 8.1 and commonly used PHP extensions:
+
 ```
-sudo apt -y install php8.0 libapache2-mod-php8.0 php8.0-{bcmath,bz2,intl,gd,mbstring,mysql,zip,curl,dom}
+sudo apt -y install php8.1 libapache2-mod-php8.1 php8.1-{bcmath,bz2,intl,gd,mbstring,mysql,zip,curl,dom,cli,xml}
 ```
+
+> You can use `php -v` to check PHP version, and `php -m` to check what extensions are installed.
+
+- You have to restart Apache for the changes to take effect:
 
 ```
 sudo service apache2 restart
@@ -309,10 +323,14 @@ http://127.0.0.1:1080
 sudo apt install -y adminer
 ```
 
+- Activate the conf file for Apache:
+
 ```
 sudo a2enconf adminer
 ```
 
+- Finally, restart Apache:
+- 
 ```
 sudo service apache2 restart
 ```
@@ -390,6 +408,7 @@ maildev --ip 127.0.0.1
 
 - [Official Microsoft Documentation](https://docs.microsoft.com/fr-fr/windows/wsl/install)
 - [WSL2 Guide for Debian](https://gist.github.com/xnebulr/c769f26bffd41db2667d1f9de9f8ce5a)
+- [PHP.Watch](https://php.watch/versions)
 
 ## Tools
 - [Debian](https://www.debian.org/)
