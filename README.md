@@ -256,6 +256,19 @@ sudo nano /etc/apache2/sites-enabled/000-default.conf
 sudo chgrp $(id -u) -R /var/www && sudo chown www-data -R /var/www && sudo chmod 775 -R /var/www
 ```
 
+- Rename `html` directory to `LAMP_setup`:
+
+```
+mv /var/www/html /var/www/LAMP_setup
+```
+
+- And `index.html` file to `apache2.html`:
+
+```
+mv /var/www/LAMP_setup/index.html /var/www/LAMP_setup/apache2.html
+```
+
+
 
 ## Install Node.js
 
@@ -323,6 +336,12 @@ sudo apt -y install php8.1 libapache2-mod-php8.1 php8.1-{bcmath,bz2,intl,gd,mbst
 
 ```
 sudo service apache2 restart
+```
+
+- You can create a file to display your PHP configuration:
+
+```bash
+echo -e "<?php\n\nphpinfo();\n\n// EOF" >> /var/www/LAMP_setup/phpinfo.php
 ```
 
 ### PHP errors
