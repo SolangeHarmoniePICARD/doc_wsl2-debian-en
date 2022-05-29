@@ -126,7 +126,7 @@ sudo nano /etc/sudoers
 
 - At the last line of the file, paste:
 
-```
+```bash
 # NO PASSWORD
 %sudo   ALL=(ALL:ALL) NOPASSWD:ALL
 ```
@@ -216,6 +216,7 @@ Thanks for using MariaDB!
 ```
 sudo mysql -u root -p
 ```
+
 - Change *username* and *password*:
 
 ```
@@ -388,7 +389,7 @@ maildev --ip 127.0.0.1
 
 ![MailDev](screenshots/14.png)
 
-- In the URL bar of your browser, type:
+- In the **URL bar** of your browser, type:
 
 ```
 http://127.0.0.1:1080
@@ -423,7 +424,7 @@ sudo a2enconf adminer
 sudo service apache2 restart
 ```
 
-- In the URL bar of your browser, type: 
+- In the **URL bar** of your browser, type: 
 
 ```
 localhost/adminer
@@ -495,7 +496,6 @@ cat ~/.ssh/id_rsa.pub
 
 ![Allow connexion between VSCode & GitHub](screenshots/22.png)
 
-
 ## Install « Remote - WSL » in VSCode 
 
 - Install [Remote - WSL](https://aka.ms/vscode-remote/download/wsl)
@@ -509,15 +509,19 @@ sudo nano ~/.bashrc
 
 - At the last line of the file, paste:
 
-```
-# Start apache2, mariadb & postfix
-sudo service apache2 start && sudo service mariadb start && sudo service postfix start
+```bash
+if [[ "$TERM_PROGRAM" != "vscode" ]]; then
 
-# Start VSCode (Remote WSL)
-code /var/www
+        # Start apache2, mariadb & postfix
+        sudo service apache2 start && sudo service mariadb start && sudo service postfix start
 
-# Start MailDev
-maildev --ip 127.0.0.1
+        # Init VSCode (Remote WSL)
+        code /var/www
+
+        # Init MailDev
+        maildev --ip 127.0.0.1
+
+fi
 ```
 
 ## 🎉 It's over!
@@ -527,10 +531,6 @@ maildev --ip 127.0.0.1
 - How to use it? Simply by launching Debian in Windows 11, which will start Apache, MariaDB, Postfix, then Visual Studio Code which connects directly to your www directory, and finally MailDev. 
 
 - You can minimize the Debian shell, and there is no need to touch it as long as you develop.
-
-- ⚠️ Warning: when you are in Visual Studio Code, you can launch a new terminal, it will open by default the bash shell (that's what we want !), BUT it will re-do the init (it will start Apache, MariaDB, Postfix and MailDev): as MailDev is already launched in the Debian shell, it will display some error lines. It doesn't matter:
-
-![init](screenshots/22.png)
 
 ## Resources
 
