@@ -11,6 +11,9 @@
 
 > Download and install [Visual Studio Code](https://code.visualstudio.com/Download)
 
+- For a better integration of VSCode in Windows, check the following two checkboxes:
+
+![VSCode integration](screenshots/0.png)
 
 ## Install Debian in WSL2
 
@@ -82,9 +85,15 @@ deb http://security.debian.org/debian-security/ bullseye-security main
 
 > Press `CTRL` + `O` for overwriting, confirm by pressing `Enter`, and leave nano by pressing `CTRL` + `X`.
 
+- Update and upgrade packages:
+
 ```
 sudo apt update && sudo apt upgrade -y
 ```
+
+> Answer yes to the question « restart services during upgrade packages » 
+
+![Restart services](screenshots/7.png)
 
 - Upgrade the version:
 
@@ -92,7 +101,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt full-upgrade -y
 ```
 
-> Select `yes` when needed.
+- Clean your distribution:
 
 ```
 sudo apt autoremove -y
@@ -238,6 +247,8 @@ sudo nano /etc/apache2/sites-enabled/000-default.conf
 
 - Change ```DocumentRoot /var/www/html``` to ```DocumentRoot /var/www```.
 
+![Apache Config](screenshots/8.png)
+
 - Then, change permissions:
 
 ```
@@ -249,11 +260,15 @@ sudo chgrp $(id -u) -R /var/www && sudo chown www-data -R /var/www && sudo chmod
 
 > Why we need to install Node.js in our LAMP Stack? Simply because we will install a mail catcher: MailDev (which works with Node.js). 
 
-```curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash```
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
 
 - Close the Debian shell and restart it.
 
-```command -v nvm```
+```
+command -v nvm
+```
 
 > If returns `nvm`, it works !
 
@@ -312,7 +327,7 @@ sudo service apache2 restart
 ### PHP errors
 
 ```
-sudo nano /etc/php/8.0/apache2/php.ini
+sudo nano /etc/php/8.1/apache2/php.ini
 ```
 
 - Change the default value of `error_reporting` from `E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED` to `E_ALL`:
@@ -326,6 +341,13 @@ error_reporting = E_ALL
 ```
 display_errors = On
 ```
+- Find these 2 lines in the file::
+
+![PHP Errors](screenshots/9.png)
+
+- And change values: 
+
+![PHP Errors - change values](screenshots/9.png)
 
 > View error logs when you debug your code in PHP: `cat /var/log/apache2/error.log`
 
