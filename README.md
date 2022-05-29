@@ -450,6 +450,7 @@ sudo apt install git -y
 ```
 git config --global user.name your-username
 git config --global user.email your-mail@example.com
+git config --global init.defaultBranch main
 ```
 
 - You can change this information at any time:
@@ -489,6 +490,10 @@ cat ~/.ssh/id_rsa.pub
 - Result: 
 
 ![GitHub SSH Key result](screenshots/21.png)
+
+- When you make your first commit, you will have to allow the connection between git and github:
+
+![Allow connexion between Git & GitHub](screenshots/22.png)
 
 ## Install « Remote - WSL » in VSCode 
 
