@@ -1,5 +1,17 @@
 # Install LAMP in WSL2
 
+
+## Why WSL?
+
+> « WSL lets you run a Linux environment - including command-line tools and applications - directly on Windows, without the overhead of a traditional virtual machine or dualboot setup. [...] When you install a version of Linux on Windows, you’re getting a full Linux environment. It's isolated from Windows - the UI is the terminal, and you can install tools, languages, and compilers into the Linux environment without modifying or disrupting your Windows installation. »
+> Source : [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+
+
+## Prerequisite
+
+> Download and install [Visual Studio Code](https://code.visualstudio.com/Download)
+
+
 ## Install Debian in WSL2
 
 - Run PowerShell as Administrator:
@@ -8,7 +20,8 @@
 wsl --install -d Debian
 ```
 
-## Upgrade Debian from Buster to Bullseye
+
+### Upgrade Debian from Buster to Bullseye
 
 - In the Debian shell:
 
@@ -65,7 +78,7 @@ cat /etc/debian_version
 sudo apt install -y software-properties-common curl wget openssh-server
 ```
 
-## [optional] No Password
+### [optional] No Password
 
 ```
 sudo nano /etc/sudoers
@@ -77,6 +90,7 @@ sudo nano /etc/sudoers
 # NO PASSWORD
 %sudo   ALL=(ALL:ALL) NOPASSWD:ALL
 ```
+
 
 ## Install MariaDB
 
@@ -170,6 +184,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost';
 EXIT
 ```
 
+
 ## Install Apache
 
 ```
@@ -198,9 +213,10 @@ sudo nano /etc/apache2/sites-enabled/000-default.conf
 sudo chgrp $(id -u) -R /var/www && sudo chown www-data -R /var/www && sudo chmod 775 -R /var/www
 ```
 
+
 ## Install Node.js
 
-> Why we need to install Node.js in our LAMP Stack ? Simply because we will install a mail catcher, MailDev, which works with Node.js. 
+> Why we need to install Node.js in our LAMP Stack? Simply because we will install a mail catcher: MailDev (which works with Node.js). 
 
 ```curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash```
 
@@ -222,6 +238,7 @@ nvm install node
 ```
 
 > List what versions of Node are installed: `nvm ls`.
+
 
 ## Install PHP
 
@@ -341,6 +358,7 @@ sudo service apache2 restart
 localhost/adminer
 ```
 
+
 ## Install GIT
 
 ```
@@ -362,7 +380,7 @@ sudo nano ~/.gitconfig
 
 ### Authenticate with SSH key on GitHub
 
-- Create GitHub account: [Join GitHub](https://github.com/join)
+> Of course, you must have a GitHub account. If you don't have one, create your GitHub account: [Join GitHub](https://github.com/join)
 
 - Generate your SSH Key: 
 
@@ -378,11 +396,11 @@ cat ~/.ssh/id_rsa.pub
 
 - Then paste it into GitHub.
 
-## Install VSCode 
 
-- Download and install [Visual Studio Code](https://code.visualstudio.com/Download)
+## Install « Remote - WSL » in VSCode 
 
 - Install [Remote - WSL](https://aka.ms/vscode-remote/download/wsl)
+
 
 ## Init
 
