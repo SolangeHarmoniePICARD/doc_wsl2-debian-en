@@ -264,7 +264,7 @@ sudo chgrp $(id -u) -R /var/www && sudo chown www-data -R /var/www && sudo chmod
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ```
 
-- Close the Debian shell and restart it.
+- ⚠️ Close the Debian shell and restart it.
 
 ```
 command -v nvm
@@ -396,7 +396,7 @@ http://127.0.0.1:1080
 
 ![MailDev GUI](screenshots/15.png)
 
-- Now, exit shell. For some reason, when you close the shell and restart it, then try to launch MailDev, everything happens as if it was not installed. Why is this? I DON'T KNOW! The solution... reinstall MailDev a second time with the command `npm install -g maildev`, then there is normally no more problem.
+- ⚠️ Now, exit shell. For some reason, when you close the shell and restart it, then try to launch MailDev, everything happens as if it was not installed. Why is this? I DON'T KNOW! The solution... reinstall MailDev a second time with the command `npm install -g maildev`, then there is normally no more problem.
 
 ```
 npm install -g maildev
@@ -429,6 +429,15 @@ sudo service apache2 restart
 localhost/adminer
 ```
 
+> ⚠️ Don't forget to launch don't forget to launch `sudo service mariadb start`.
+
+- Log in with the username and password you set up when you installed MariaDB:
+
+![Adminer Login](screenshots/16.png)
+
+- It works:
+
+![Adminer GUI](screenshots/17.png)
 
 ## Install GIT
 
@@ -455,9 +464,13 @@ sudo nano ~/.gitconfig
 
 - Generate your SSH Key: 
 
+> Keep the default values, and do not enter a passphrase
+
 ```
 ssh-keygen -t rsa -b 2048
 ```
+
+![SSH Key](screenshots/18.png)
 
 - Display your SSH Key and copy it:
 
@@ -465,8 +478,17 @@ ssh-keygen -t rsa -b 2048
 cat ~/.ssh/id_rsa.pub
 ```
 
-- Then paste it into GitHub.
+- Then you need to paste it in `SSH Keys` into your GitHub Account Settings. Login with your account and go to `Settings`:
 
+![GitHub Settings access](screenshots/19.png)
+
+- Paste your SSH Key:
+
+![Paste SSH Key](screenshots/20.png)
+
+- Result: 
+
+![GitHub SSH Key result](screenshots/21.png)
 
 ## Install « Remote - WSL » in VSCode 
 
@@ -492,6 +514,17 @@ code /var/www
 maildev --ip 127.0.0.1
 ```
 
+## 🎉 It's over!
+
+- Congratulations! You have finished configuring your local PHP/SQL development environment!
+
+- How to use it? Simply by launching Debian in Windows 11, which will start Apache, MariaDB, Postfix, then Visual Studio Code which connects directly to your www directory, and finally MailDev. 
+
+- You can minimize the Debian shell, and there is no need to touch it as long as you develop.
+
+- ⚠️ Warning: when you are in Visual Studio Code, you can launch a new terminal, it will open by default the bash shell (that's what we want !), BUT it will re-do the init (it will start Apache, MariaDB, Postfix and MailDev): as MailDev is already launched in the Debian shell, it will display some error lines. It doesn't matter:
+
+![init](screenshots/22.png)
 
 ## Resources
 
