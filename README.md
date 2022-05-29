@@ -341,13 +341,13 @@ error_reporting = E_ALL
 ```
 display_errors = On
 ```
-- Find these 2 lines in the file::
+- Find these 2 lines in the file:
 
 ![PHP Errors](screenshots/9.png)
 
 - And change values: 
 
-![PHP Errors - change values](screenshots/9.png)
+![PHP Errors - change values](screenshots/10.png)
 
 > View error logs when you debug your code in PHP: `cat /var/log/apache2/error.log`
 
@@ -360,11 +360,19 @@ sudo apt install -y postfix
 
 > Choose `Internet Site`, then keep the default values.
 
+![Install Postfix](screenshots/11.png)
+
 ```
 sudo nano /etc/postfix/main.cf
 ```
 
+- Find the line `relayhost ` (normally, there is no value yet):
+
+![Postfix relayhost](screenshots/12.png)
+
 - Change value of `relayhost ` to `127.0.0.1:1025`.
+
+![Postfix relayhost - change value](screenshots/13.png)
 
 ### Install MailDev
 
@@ -378,13 +386,23 @@ npm install -g maildev
 maildev --ip 127.0.0.1
 ```
 
+![MailDev](screenshots/14.png)
+
 - In the URL bar of your browser, type:
 
 ```
 http://127.0.0.1:1080
 ```
 
-> Close MailDev by pressing `CTRL` + `C`.
+![MailDev GUI](screenshots/15.png)
+
+- Now, exit shell. For some reason, when you close the shell and restart it, then try to launch MailDev, everything happens as if it was not installed. Why is this? I DON'T KNOW! The solution... reinstall MailDev a second time with the command `npm install -g maildev`, then there is normally no more problem.
+
+```
+npm install -g maildev
+```
+
+> Ok, it's work. We need this when we develop in php... For now, you can close MailDev by pressing `CTRL` + `C`.
 
 
 ## Install Adminer
@@ -400,7 +418,7 @@ sudo a2enconf adminer
 ```
 
 - Finally, restart Apache:
-- 
+
 ```
 sudo service apache2 restart
 ```
