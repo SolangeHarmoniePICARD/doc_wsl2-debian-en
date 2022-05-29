@@ -493,7 +493,7 @@ cat ~/.ssh/id_rsa.pub
 
 - When you make your first commit, you will have to allow the connection between git and github:
 
-![Allow connexion between Git & GitHub](screenshots/22.png)
+![Allow connexion between Git & GitHub](screenshots/23.png)
 
 ## Install « Remote - WSL » in VSCode 
 
