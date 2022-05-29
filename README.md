@@ -14,12 +14,43 @@
 
 ## Install Debian in WSL2
 
+### In Windows 11
+
 - Run PowerShell as Administrator:
+
+![Run PowerShell as Administrator](screenshots/1.png)
+
+- Type the command to know the available distributions:
+
+```
+wsl --list --online
+```
+
+![available distributions](screenshots/2.png)
+
+- Install Debian: 
 
 ```
 wsl --install -d Debian
 ```
 
+![Successful installation](screenshots/3.png)
+
+- Reboot the system (system updates will occur during shutdown and reboot: it's normal!).
+
+![Successful installation](screenshots/4.png)
+
+### Set up Debian
+
+- Launch Debian shell: 
+
+![Debian shell](screenshots/5.png)
+
+- Wait a few seconds, then configure a new user and a new password:
+
+![Password & Username](screenshots/6.png)
+
+> On Unix-like systems (like Linux), when you type a password, for security reasons, nothing is displayed. This is normal!
 
 ### Upgrade Debian from Buster to Bullseye
 
