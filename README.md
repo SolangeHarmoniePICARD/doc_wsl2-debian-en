@@ -551,6 +551,10 @@ if [[ "$TERM_PROGRAM" != "vscode" ]]; then
 fi
 ```
 
+- Close your Debian shell and relaunch it, VSCode opens in `www` directory, you need to "trust the authors of the files in this folder":
+
+![VSCode - Trust authors](screenshots/27.png)
+
 ## 🎉 It's over!
 
 - Congratulations! You have finished configuring your local PHP/SQL development environment!
