@@ -39,9 +39,11 @@ wsl --install -d Debian
 
 ![Successful installation](screenshots/3.png)
 
-- Reboot the system (system updates will occur during shutdown and reboot: it's normal!).
+- Reboot the system (system updates will occur during shutdown and reboot: it's normal!). 
 
 ![Successful installation](screenshots/4.png)
+
+> This step is only necessary the first time you install a Linux distribution with WSL2. If you make a new installation, you will not need to reboot. 
 
 ### Set up Debian
 
