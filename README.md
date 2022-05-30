@@ -352,22 +352,16 @@ echo -e "<?php\n\nphpinfo();\n\n// EOF" >> /var/www/LAMP_setup/phpinfo.php
 sudo nano /etc/php/8.1/apache2/php.ini
 ```
 
-- Change the default value of `error_reporting` from `E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED` to `E_ALL`:
-
-```
-error_reporting = E_ALL
-```
-
-- Change the default value of `display_errors` from `Off` to `On`:
-
-```
-display_errors = On
-```
 - Find these 2 lines in the file:
 
 ![PHP Errors](screenshots/9.png)
 
-- And change values: 
+- Change the default value of `error_reporting` from `E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED` to `E_ALL` and the default value of `display_errors` from `Off` to `On`:
+
+```
+error_reporting = E_ALL
+display_errors = On
+```
 
 ![PHP Errors - change values](screenshots/10.png)
 
@@ -384,11 +378,13 @@ sudo apt install -y postfix
 
 ![Install Postfix](screenshots/11.png)
 
+- We need to change `relayhost` in the config file of Postfix:
+
 ```
 sudo nano /etc/postfix/main.cf
 ```
 
-- Find the line `relayhost ` (normally, there is no value yet):
+- Find the line `relayhost` (normally, there is no value yet):
 
 ![Postfix relayhost](screenshots/12.png)
 
@@ -467,7 +463,7 @@ localhost/adminer
 sudo apt install git -y
 ```
 
-- Change *your-username* and *your-mail@example.com*:
+- Change `your-username` and `your-mail@example.com`:
 
 ```
 git config --global user.name your-username
@@ -519,7 +515,17 @@ cat ~/.ssh/id_rsa.pub
 
 ## Install « Remote - WSL » in VSCode 
 
-- Install [Remote - WSL](https://aka.ms/vscode-remote/download/wsl)
+- Install [Remote - WSL](https://aka.ms/vscode-remote/download/wsl):
+
+![Remote - WSL Web Page](screenshots/24.png)
+
+- Validates the opening in VSCode:
+
+![Remote - WSL open VSCode](screenshots/25.png)
+
+- Installs the extension in VSCode:
+
+![Remote - WSL open VSCode](screenshots/26.png)
 
 
 ## Init
