@@ -117,7 +117,7 @@ cat /etc/debian_version
 
 - Install additional packages:
 ```
-sudo apt install -y software-properties-common curl wget openssh-server
+sudo apt install -y software-properties-common curl wget openssh-server net-tools
 ```
 
 ### [optional] No Password
@@ -270,6 +270,19 @@ mv /var/www/html /var/www/LAMP_setup
 mv /var/www/LAMP_setup/index.html /var/www/LAMP_setup/apache2.html
 ```
 
+- We need to do one last thing. In your terminal, type: 
+
+```
+sudo nano /etc/apache2/apache2.conf
+```
+
+- On the last line of the file, paste:
+
+```
+AcceptFilter https none
+```
+
+> Press `CTRL` + `O` for overwriting, confirm by pressing `Enter`, and leave nano by pressing `CTRL` + `X`.
 
 
 ## Install Node.js
